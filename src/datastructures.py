@@ -15,8 +15,8 @@ class FamilyStructure:
         # example list of members
         self._members = [
             {
-                "id":self._generateId(),
-                "first_name":"John",
+                "id":3443,
+                "first_name":"Tommy",
                 "last_name":self.last_name,
                 "age": 33,
                 "lucky_numbers":[7,13,22]
@@ -51,7 +51,7 @@ class FamilyStructure:
     def add_member(self, member):
         # fill this method and update the return
        new_member={
-                "id":self._generateId(),
+                "id":member.get("id",self._generateId()),
                 "first_name":member.get("first_name"),
                 "last_name":self.last_name,
                 "age": member.get("age"),
@@ -65,7 +65,8 @@ class FamilyStructure:
         # fill this method and update the return
       for index in range (0,len(self._members)):
           if self._members[index].get("id")==id:
-              return self._members.pop(index)
+               self._members.remove(self._members[index])
+               return {"done":True}
       return None
     
     def get_member(self, id):

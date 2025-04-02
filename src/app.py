@@ -54,6 +54,16 @@ def delete_member_by_id(id):
     member= jackson_family.delete_member(id)
     if member != None:
         return jsonify({"done":True}), 200
+    return jsonify({"done":False}),404
+
+
+@app.route('/member', methods=['POST'])
+def add_member_2():
+
+    request_body=request.get_json()
+    member= jackson_family.add_member(request_body)
+    if member != None:
+        return jsonify({"done":True}), 200
     return jsonify({"msg":"Not found"}),404
 
 
